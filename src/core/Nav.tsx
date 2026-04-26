@@ -17,14 +17,14 @@ import { SCHEDULE_FEATURE } from "@/controller/controller";
 const ladderLeaguesMenus = [
     {text: 'Upcoming Spring Ladder Leagues', link: '#', key: 'upcoming_spring_ladder_leagues',
         children: [
-            {text: 'Women\'s Ladder League', link: '/ladder-league/upcoming/womens', key: 'll_u_women' },
-            {text: 'Men\'s Ladder League', link: '/ladder-league/upcoming/womens', key: 'll_u_men' },
-            {text: 'Mixed Ladder League', link: '/ladder-league/upcoming/womens', key: 'll_u_mixed' },
+            {text: 'Women\'s Ladder League', link: '/ladder-league/womens#standings', key: 'womens' },
+            {text: 'Men\'s Ladder League', link: '/ladder-league/mens#standings', key: 'mens' },
+            {text: 'Mixed Ladder League', link: '/ladder-league/mixed#standings', key: 'mixed' },
         ]
     },
     {text: 'Past Ladder Leagues', link: '#', key: 'past_ladder_leagues',
         children: [
-            {text: 'Standings', link: '/ladder-league#standings', key: 'standings' },
+            {text: 'Standings', link: '/ladder-league/past_standings#standings', key: 'past_standings' },
         ]
     },
 ];

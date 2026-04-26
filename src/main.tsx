@@ -23,7 +23,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/ladder-league",
+    // path: "/ladder-league",
+    path: "/ladder-league/:leagueType",
     element: <LadderLeague />,
   },
   {

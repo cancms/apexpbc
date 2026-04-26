@@ -8,13 +8,23 @@ import Footer from "@/core/Footer";
 // import ladderleague2026horiz from "../assets/ladderleague2026horiz.jpeg";
 // import ladderleague2026horiz2 from "../assets/ladderleague2026horiz-2.jpeg";
 import ScrollToTop from "@/core/ScrollToTop";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 // import { useIsMobile } from "@/lib/isMobile";
-import { getMatchSheetUrlBasedOnLvl, getPlayerDataSheetUrl, SCHEDULE_FEATURE, USE_PLAYER_DATA } from "@/controller/controller";
+import {
+  getMatchSheetUrlInfo,
+  getAvailableLevels,
+  getMatchSheetUrlBasedOnLvl,
+  getPlayerDataSheetUrl,
+  SCHEDULE_FEATURE,
+  USE_PLAYER_DATA
+} from "@/controller/controller";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 
 export default function LadderLeague() {
+
+
+
   // const isMobile = useIsMobile();
   const navigate = useNavigate()
   const { state, hash } = useLocation();
@@ -28,21 +38,47 @@ export default function LadderLeague() {
   const [matchHistory, setMatchHistory] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
+
+  let { leagueType } = useParams();
+  leagueType = leagueType || 'past_standings';
+
   const lvls = ["3.0", "3.5", "4.0+"];
+  // const lvls = getAvailableLevels(leagueType);
+
+
+
+
+  // const [leagueType, setLeagueType] = useState(() => {
+  //   let { leagueType } = useParams();
+  //   leagueType = leagueType || 'past_standings';
+  //   return leagueType;
+  // });
 
   const [activeLvlTab, setActiveLvlTab] = useState(() => {
     return localStorage.getItem("activeLvlTab") || lvls[0];
   });
-  
+
+
+
+  // init level, use the first one
+  // setActiveLvlTab(lvls[0]);
+
+
   useEffect(() => {
+
+    console.log('===========', leagueType);
+    // const lvls = ["3.0", "3.5", "4.0+"];
+
     const getData = async () => {
       setLoading(true);
       localStorage.setItem("activeLvlTab", activeLvlTab);
-      const res = await fetch(getMatchSheetUrlBasedOnLvl(activeLvlTab));
+      // const res = await fetch(getMatchSheetUrlBasedOnLvl(activeLvlTab));
+      const res = await fetch(getMatchSheetUrlInfo(activeLvlTab, leagueType).matchDataSheetUrl);
       const json = await res.json();
       const playerMatchesCsv: any[] = transformSheetsAPIResponse(json.values);
 
-      const res2 = await fetch(getPlayerDataSheetUrl);
+      // const res2 = await fetch(getPlayerDataSheetUrl);
+      const res2 = await fetch(getMatchSheetUrlInfo(activeLvlTab, leagueType).playerDataSheetUrl);
       const json2 = await res2.json();
       const playerDataCsv: any[] = transformSheetsAPIResponse(json2.values);
 
@@ -85,7 +121,7 @@ export default function LadderLeague() {
       setLoading(false);
     }
     getData();
-  }, [activeLvlTab]);
+  }, [activeLvlTab, leagueType]);
 
   useEffect(() => {
     if (hash) {
