@@ -1,0 +1,25 @@
+.sliderContent {
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+  background-color: #0A3759;
+  border: none;
+  color: white;
+}
+
+.topNav {
+  background-color: #0A3759;
+}
+
+.mainSection {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.antonFont {
+  font-family: "Anton", sans-serif;
+}
+
+.lucide-x {
+  color: white;
+}

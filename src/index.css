@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+.border-b {
+    border-bottom-width: 0px;
+}
+@keyframes scroll {
+    0% {
+      transform: translateX(80%);
+    }
+    100% {
+      transform: translateX(-80%);
+    }
+  }
+  
+.animate-scroll {
+    display: flex;
+    animation: scroll 7s linear infinite;
+}
