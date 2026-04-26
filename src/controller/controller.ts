@@ -15,7 +15,7 @@ export const getMatchSheetUrlBasedOnLvl = (lvl: string, type = '') => {
 export const getPlayerDataSheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/'${encodeURIComponent("playerData")}'?key=AIzaSyC9hqTR13qtOoLLjnjxiVYRiw93gMpR0TU`;
 
 
-export function  getMatchSheetUrlInfo (level, type = 'past_standings') {
+export function  getMatchSheetUrlInfo (level: any, type = 'past_standings') {
     const googleSheetIds: any = {
         past_standings: GOOGLE_SHEET_ID,
         mens: '1-Ue3sQ9vPBfJaNh1zlKXPMBV22uW8MgiNdGHaOjlUEw',

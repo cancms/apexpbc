@@ -12,9 +12,9 @@ import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 // import { useIsMobile } from "@/lib/isMobile";
 import {
   getMatchSheetUrlInfo,
-  getAvailableLevels,
-  getMatchSheetUrlBasedOnLvl,
-  getPlayerDataSheetUrl,
+  // getAvailableLevels,
+  // getMatchSheetUrlBasedOnLvl,
+  // getPlayerDataSheetUrl,
   SCHEDULE_FEATURE,
   USE_PLAYER_DATA
 } from "@/controller/controller";
